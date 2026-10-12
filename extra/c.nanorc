@@ -51,7 +51,7 @@ color green "\<(and|or|xor|not)\>"
 color brightgreen "[)(]"
 color brightgreen "[;,]"
 color normal "[}{]"
-color normal "[][]"
+color green  "[][]"
 color normal "[.]"
 
 # =======================================
