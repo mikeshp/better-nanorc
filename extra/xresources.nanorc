@@ -1,0 +1,22 @@
+syntax "Xresources" "\.X(defaults|resources|modmap)$"
+comment "!"
+
+icolor green "^[[:space:]]*[[:alnum:]\.*]+"
+icolor brightgreen "\*[[:alnum:]]+\:"
+icolor brightred "\<[0-9]+\>"
+icolor red "[*:=]"
+icolor brightblue "\<(true|false)\>"
+icolor ,green "[[:space:]]+$"
+icolor ,red "	+ +| +	+"
+
+## Xmodmap keywords
+icolor green "\<(add|clear)\>"
+icolor brightblue "\<(keycode)\>"
+
+## Fix #000000 colors
+icolor brightblue "(^|[[:space:]])#([^{].*)?$"
+
+## Comments
+icolor cyan "^[[:space:]]*!.*$"
+icolor cyan "^[[:space:]]*#.*$"
+icolor cyan "\\n\\"
