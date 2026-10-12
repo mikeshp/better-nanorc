@@ -62,9 +62,9 @@ color normal "\<[A-Z_][0-9A-Z_]*\>"
 ## Special constants and system tokens
 color green "\<(FILE|DIR)\>"
 color cyan "\<(true|false)\>"
-color cyan "\<(this)\>"
+color green "\<(this)\>"
 color brightred "\<(NULL|EOF)\>"
-color cyan "\<(stdin|stdout|stderr)\>"
+color green "\<(stdin|stdout|stderr)\>"
 ## Numbers
 icolor cyan "\<[0-9]+((\.[0-9]+)|(llu|ull|ul|lu|ll|l|u))?\>"
 icolor cyan "\<[0-9]+\.?[0-9]*[e][+-]?[0-9]+[f]?\>"
