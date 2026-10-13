@@ -53,3 +53,6 @@ color magenta "(^|[[:blank:]]+)#.*"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
+
+# Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"

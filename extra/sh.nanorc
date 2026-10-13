@@ -56,3 +56,6 @@ color ,green "[[:space:]]+$"
 
 # Comments.
 color red "(^|[[:blank:]])#.*"
+
+# Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"

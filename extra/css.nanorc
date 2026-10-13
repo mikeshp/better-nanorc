@@ -1,6 +1,7 @@
 ## Syntax highlighting for CSS files.
 
 ## Original author:  Simon Rupf
+## Modified by: Mikhail Shprygov
 
 syntax css "\.css$"
 comment "/*|*/"
@@ -20,3 +21,6 @@ color brightblue start="/\*" end="\*/"
 
 # Syntactic characters:
 color green ";|:|\{|\}"
+
+# Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"

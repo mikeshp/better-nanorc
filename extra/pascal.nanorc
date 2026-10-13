@@ -143,3 +143,6 @@ color ,green "[[:space:]]+$"
 
 # Reminders
 icolor black,green "\<(fixme|todo|xxx)\>"
+
+# Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"

@@ -131,3 +131,5 @@ color brightblue "//[^"]*$|(^|[[:blank:]])//.*"
 color brightblue start="/\*" end="\*/"
 ## Reminders
 color brightwhite,blue "\<(FIXME|TODO|XXX)\>"
+## Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
