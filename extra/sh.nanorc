@@ -33,7 +33,7 @@ icolor brightred "\<0[0-7]+(llu|ull|ul|lu|ll|l|u)?\>"
 icolor brightred "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
 
 # Short and long options.
-color green "[[:blank:]](-[A-Za-z]|--\<[A-Za-z-]+)\>"
+color green "[[:blank:]](-[A-Za-z]+|--\<[A-Za-z-]+)\>"
 
 # Common commands.
 color green "\<(awk|cat|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|source|du|df|date|su(do)?)|curl|wget|ping|ssh|rsync|scp\>"
