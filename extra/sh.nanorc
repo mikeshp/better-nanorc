@@ -15,12 +15,13 @@ linter dash -n
 #color brightgreen "^[A-Za-z0-9_-]+\(\)"
 
 # Keywords, symbols, and comparisons.
-color green "\<(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)\>"
-color brightred "\<(return|exit|break)\>"
+color lightblue "\<(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)\>"
+color magenta "\<(return|exit|break|continue)\>"
 color green "\<(kill|pkill|killall)\>"
 color green "\<(declare|eval|exec|export|let|local)\>"
-#color green "[][{}():;|`$<>+~*/!=&\\-]"
 color green "[][{}():;,|`$<>~!=\\&]"
+color green "([+-/*%]|>>|<<|&|\^|\|)="
+#color yellow "[)(]"
 #color yellow "[][{}()$`'\"]"
 color green "-(eq|ne|gt|lt|ge|le|ef|ot|nt)\>"
 
@@ -35,22 +36,22 @@ icolor brightred "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
 color green "[[:blank:]](-[A-Za-z]|--\<[A-Za-z-]+)\>"
 
 # Common commands.
-color brightblue "\<(awk|cat|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|source|du|df|date|su(do)?)|curl|wget|ping|ssh|rsync|scp\>"
+color green "\<(awk|cat|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|source|du|df|date|su(do)?)|curl|wget|ping|ssh|rsync|scp\>"
 color normal "[.-]tar\>"
 
 # Strings.
 color brightyellow ""([^"\]|\\.)*"|'([^'\]|\\.)*'"
 
 # Basic variable names (no braces).
-color yellow "\$([-@*#?$!0-9]|[[:alpha:]_][[:alnum:]_]*)"
+color brightgreen "\$([-@*#?$!0-9]|[[:alpha:]_][[:alnum:]_]*)"
 # More complicated variable names; handles braces and replacements and arrays.
-color yellow "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:blank:]]*[[:alnum:]_]+[[:blank:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
+color brightgreen "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:blank:]]*[[:alnum:]_]+[[:blank:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
 # Fix $ inside strings
-color yellow "[$]"
-color yellow "\<$_\>"
+color brightgreen "[$]"
+color brightgreen "\<$_\>"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
 
 # Comments.
-color magenta "(^|[[:blank:]])#.*"
+color cyan "(^|[[:blank:]])#.*"
