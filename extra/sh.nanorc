@@ -3,7 +3,7 @@
 ## Original author:  Mike Frysinger
 ## Modified by Mikhail Shprygov
 
-syntax sh "(\.sh|(^|/|\.)(a|ba|c|da|k|mk|pdk|tc|z)sh(rc|_profile)?|(/etc/|(^|/)\.)profile)$"
+syntax sh "(\.sh|(^|/|\.)(a|ba|c|da|k|mk|pdk|tc|z)sh(rc|_profile|_aliases)?|(/etc/|(^|/)\.)profile)$"
 header "^#!.*/(((env|busybox)[[:blank:]]+)?(a|ba|c|da|k|mk|pdk|tc|z)?sh|openrc-run|runscript)\>"
 header "-\*-.*shell-script.*-\*-"
 magic "(POSIX|Bourne-Again) shell script.*text"
@@ -16,7 +16,7 @@ linter dash -n
 
 # Keywords, symbols, and comparisons.
 color brightblue "(^|[[:blank:]]|;|\||&|\{)(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)([[:blank:]]|;|\||&|\}|\\|$)"
-color brightblue "(^|[[:blank:]]|;|\||&|\{)(declare|eval|exec|extract|export|source|let|local|test)([[:blank:]]|;|\||&|\}|\\|$)"
+color brightblue "(^|[[:blank:]]|;|\||&|\{)(declare|eval|exec|export|source|let|local|test)([[:blank:]]|;|\||&|\}|\\|$)"
 color brightblue "(^|[[:blank:]]|;|\||&|\{)(kill|pkill|killall)([[:blank:]]|;|\||&|\}|\\|$)"
 color magenta "(^|[[:blank:]]|;|\||&|\{)(return|exit|break|continue)([[:blank:]]|;|\||&|\}|\\|$)"
 color green "[][{}():;,|`$<>!=\\&]"
@@ -37,7 +37,7 @@ icolor cyan "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
 color green "[[:blank:]](-[A-Za-z]+|--\<[A-Za-z-]+)\>"
 
 # Common commands.
-color brightgreen "(^|[[:blank:]]|;|\||&|\{)(awk|cat|tac|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|du|df|date|su(do)?|curl|wget|ping|ssh|rsync|scp)([[:blank:]]|;|\||&|\}|\\|$)"
+color brightgreen "(^|[[:blank:]]|;|\||&|\{)(awk|cat|tac|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|(un)?zip|(un)?rar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|du|df|date|su(do)?|curl|wget|ping|ssh|rsync|scp|alias|type|clear)([[:blank:]]|;|\||&|\}|\\|$)"
 color normal "[.-]tar\>"
 
 # Strings.
