@@ -15,43 +15,44 @@ linter dash -n
 #color brightgreen "^[A-Za-z0-9_-]+\(\)"
 
 # Keywords, symbols, and comparisons.
-color lightblue "\<(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)\>"
-color magenta "\<(return|exit|break|continue)\>"
-color green "\<(kill|pkill|killall)\>"
-color green "\<(declare|eval|exec|export|let|local)\>"
-color green "[][{}():;,|`$<>~!=\\&]"
+color brightblue "(^|[[:blank:]]|;|\||&|\{)(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)([[:blank:]]|;|\||&|\}|\\|$)"
+color brightblue "(^|[[:blank:]]|;|\||&|\{)(declare|eval|exec|extract|export|source|let|local|test)([[:blank:]]|;|\||&|\}|\\|$)"
+color brightblue "(^|[[:blank:]]|;|\||&|\{)(kill|pkill|killall)([[:blank:]]|;|\||&|\}|\\|$)"
+color magenta "(^|[[:blank:]]|;|\||&|\{)(return|exit|break|continue)([[:blank:]]|;|\||&|\}|\\|$)"
+color green "[][{}():;,|`$<>!=\\&]"
 color green "([+-/*%]|>>|<<|&|\^|\|)="
+color green "=(~)"
 #color yellow "[)(]"
 #color yellow "[][{}()$`'\"]"
 color green "-(eq|ne|gt|lt|ge|le|ef|ot|nt)\>"
 
 # Numbers
-icolor brightred "\<[0-9]+((\.[0-9]+)|(llu|ull|ul|lu|ll|l|u))?\>"
-icolor brightred "\<[0-9]+\.?[0-9]*[e][+-]?[0-9]+[f]?\>"
-icolor brightred "\<0[x][0-9a-f]+(llu|ull|ul|lu|ll|l|u)?\>"
-icolor brightred "\<0[0-7]+(llu|ull|ul|lu|ll|l|u)?\>"
-icolor brightred "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
+icolor cyan "\<[0-9]+((\.[0-9]+)|(llu|ull|ul|lu|ll|l|u))?\>"
+icolor cyan "\<[0-9]+\.?[0-9]*[e][+-]?[0-9]+[f]?\>"
+icolor cyan "\<0[x][0-9a-f]+(llu|ull|ul|lu|ll|l|u)?\>"
+icolor cyan "\<0[0-7]+(llu|ull|ul|lu|ll|l|u)?\>"
+icolor cyan "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
 
 # Short and long options.
 color green "[[:blank:]](-[A-Za-z]+|--\<[A-Za-z-]+)\>"
 
 # Common commands.
-color green "\<(awk|cat|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|source|du|df|date|su(do)?)|curl|wget|ping|ssh|rsync|scp\>"
+color brightgreen "(^|[[:blank:]]|;|\||&|\{)(awk|cat|tac|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|du|df|date|su(do)?|curl|wget|ping|ssh|rsync|scp)([[:blank:]]|;|\||&|\}|\\|$)"
 color normal "[.-]tar\>"
 
 # Strings.
-color brightyellow ""([^"\]|\\.)*"|'([^'\]|\\.)*'"
+color brightgreen ""([^"\]|\\.)*"|'([^'\]|\\.)*'"
 
 # Basic variable names (no braces).
-color brightgreen "\$([-@*#?$!0-9]|[[:alpha:]_][[:alnum:]_]*)"
+color brightyellow "\$([-@*#?$!0-9]|[[:alpha:]_][[:alnum:]_]*)"
 # More complicated variable names; handles braces and replacements and arrays.
-color brightgreen "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:blank:]]*[[:alnum:]_]+[[:blank:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
+color brightyellow "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:blank:]]*[[:alnum:]_]+[[:blank:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
 # Fix $ inside strings
-color brightgreen "[$]"
-color brightgreen "\<$_\>"
+color brightyellow "[$]"
+color brightyellow "\<$_\>"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
 
 # Comments.
-color cyan "(^|[[:blank:]])#.*"
+color red "(^|[[:blank:]])#.*"
