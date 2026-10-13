@@ -1,4 +1,4 @@
-# Nanorc
+# Better Nanorc
 
 **Custom nanorc configuration files for that pretty syntax highlighting in Nano.**<br>
 
