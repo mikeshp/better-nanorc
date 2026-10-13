@@ -9,17 +9,23 @@ do
 	LANG_NANORC+=("$LANG")
 done
 
-echo -e ">>\tCopying files..."
+echo
+echo -e "Copying files..."
+echo
 
+echo -e "from $SYSTEM_NANORC to distro/$DISTRO_NANORC"
 cp $SYSTEM_NANORC distro/$DISTRO_NANORC
-echo -e "$SYSTEM_NANORC to distro/$DISTRO_NANORC"
+
+echo
 
 for LANG in "${LANG_NANORC[@]}"
 do
+	echo -e "from $EXTRA_ADDRESS$LANG to extra/$LANG"
 	cp $EXTRA_ADDRESS$LANG extra/$LANG
-	echo -e "$EXTRA_ADDRESS$LANG to extra/$LANG"
 done
 
-echo -e ">>\tUpdating git status..."
+echo
+echo -e "Updating git status..."
+echo
 
 git status
