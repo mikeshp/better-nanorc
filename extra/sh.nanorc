@@ -18,7 +18,7 @@ linter dash -n
 color brightblue "(^|[[:blank:]]|;|\||&|\{)(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while|sleep)([[:blank:]]|;|\||&|\}|\\|$)"
 color brightblue "(^|[[:blank:]]|;|\||&|\{)(declare|eval|exec|export|source|let|local|test)([[:blank:]]|;|\||&|\}|\\|$)"
 color brightblue "(^|[[:blank:]]|;|\||&|\{)(kill|pkill|killall)([[:blank:]]|;|\||&|\}|\\|$)"
-color magenta "(^|[[:blank:]]|;|\||&|\{)(return|exit|break|continue)([[:blank:]]|;|\||&|\}|\\|$)"
+color brightblue "(^|[[:blank:]]|;|\||&|\{)(return|exit|break|continue)([[:blank:]]|;|\||&|\}|\\|$)"
 color green "[][{}():;,|`$<>!=\\&]"
 color green "([+-/*%]|>>|<<|&|\^|\|)="
 color green "=(~)"
