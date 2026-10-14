@@ -20,3 +20,6 @@ icolor brightblue "(^|[[:space:]])#([^{].*)?$"
 icolor cyan "^[[:space:]]*!.*$"
 icolor cyan "^[[:space:]]*#.*$"
 icolor cyan "\\n\\"
+
+## Git conflict markers
+color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
