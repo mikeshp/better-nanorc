@@ -63,7 +63,7 @@ color normal "\<[A-Z_][0-9A-Z_]*\>"
 ## Special constants and system tokens
 color green "\<(FILE|DIR)\>"
 color cyan "\<(true|false)\>"
-color green "\<(this)\>"
+color cyan "\<(this)\>"
 color brightred "\<(NULL|EOF)\>"
 color green "\<(stdin|stdout|stderr)\>"
 ## Numbers
@@ -107,19 +107,19 @@ color yellow "__attribute__[[:blank:]]*\(\([^)]*\)\)|__(aligned|asm|builtin|hidd
 # =======================================
 ## Single-quoted stuff (characters, backslash escapes, hex and octal byte codes)
 color brightmagenta "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
-## Strings and names of included files
+## Double-quoted strings and names of included files
 color brightred "\"([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
 ## Format specifiers
-#color brightred "%-?[0-9]*(\.[0-9]+)?(z|ll|l|h)?(d|i|u|o|x|X|f|F|e|E|g|G|a|A|c|s|p|n)"
+#color red "%-?[0-9]*(\.[0-9]+)?(z|ll|l|h)?(d|i|u|o|x|X|f|F|e|E|g|G|a|A|c|s|p|n)"
 ## Highlight escape inside strings
 color red "\\"
 ## Fix \0 and \n inside single quotes
 color brightmagenta "'(\\0|\\n)'"
 ## Preprocessor directives
-color green start="^[[:blank:]]*#[[:blank:]]*(if(n?def)?|elif|warning|error|pragma)\>" end="(\`|[^\])$"
-color green "^[[:blank:]]*#[[:blank:]]*((define|else|endif|include(_next)?|line|undef)\>|$)"
+color cyan start="^[[:blank:]]*#[[:blank:]]*(if(n?def)?|elif|warning|error|pragma)\>" end="(\`|[^\])$"
+color cyan "^[[:blank:]]*#[[:blank:]]*((define|else|endif|include(_next)?|line|undef)\>|$)"
 ## Fix hash on preprocessor lines
-color normal "^[[:blank:]]*#"
+color brightred "^[[:blank:]]*#"
 
 # =======================================
 #  Comments, Notes, Reminders
