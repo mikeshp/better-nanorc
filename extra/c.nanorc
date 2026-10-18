@@ -3,7 +3,7 @@
 ## This file was modified by Mikhail Shprygov
 ## Since I only write in C for GCC on Linux,
 ## I am not sure about its behaviour with C++
-## For contact find me on github.com/mshprygov
+## For contact find me on codeberg.org/mikeshp
 
 syntax c "\.([ch](pp|xx)?|C|cc|c\+\+|cu|H|hh|ii?)$"
 header "-\*-.*\<C(\+\+)?((;|[[:blank:]]).*)?-\*-"
@@ -106,20 +106,21 @@ color yellow "__attribute__[[:blank:]]*\(\([^)]*\)\)|__(aligned|asm|builtin|hidd
 #  Strings and Literals
 # =======================================
 ## Single-quoted stuff (characters, backslash escapes, hex and octal byte codes)
-color brightmagenta "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
+color cyan "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
 ## Double-quoted strings and names of included files
-color brightred "\"([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
+color brightmagenta "\"([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
 ## Format specifiers
-#color red "%-?[0-9]*(\.[0-9]+)?(z|ll|l|h)?(d|i|u|o|x|X|f|F|e|E|g|G|a|A|c|s|p|n)"
+#color magenta "%-?[0-9]*(\.[0-9]+)?(z|ll|l|h)?(d|i|u|o|x|X|f|F|e|E|g|G|a|A|c|s|p|n)"
 ## Highlight escape inside strings
-color red "\\"
+color magenta "\\"
 ## Fix \0 and \n inside single quotes
-color brightmagenta "'(\\0|\\n)'"
+color cyan "'(\\0|\\n)'"
 ## Preprocessor directives
-color cyan start="^[[:blank:]]*#[[:blank:]]*(if(n?def)?|elif|warning|error|pragma)\>" end="(\`|[^\])$"
-color cyan "^[[:blank:]]*#[[:blank:]]*((define|else|endif|include(_next)?|line|undef)\>|$)"
+color green start="^[[:blank:]]*#[[:blank:]]*(if(n?def)?|elif|warning|error|pragma)\>" end="(\`|[^\])"
+color green "^[[:blank:]]*#[[:blank:]]*((define|(if|un)(n?def)?|el(se|if)|endif)\>)"
+color cyan  "^[[:blank:]]*#[[:blank:]]*((include(_next)?|line)\>)"
 ## Fix hash on preprocessor lines
-color red "^[[:blank:]]*#"
+color normal "^[[:blank:]]*#"
 
 # =======================================
 #  Comments, Notes, Reminders
@@ -130,6 +131,6 @@ color ,green "[[:space:]]+$"
 color brightblue "//[^"]*$|(^|[[:blank:]])//.*"
 color brightblue start="/\*" end="\*/"
 ## Reminders
-color brightwhite,blue "\<(FIXME|TODO|XXX)\>"
+color brightwhite,blue "\<(FIXME|fixme|TODO|todo)\>"
 ## Git conflict markers
 color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
