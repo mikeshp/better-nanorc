@@ -38,6 +38,7 @@ Otherwise, comment out the corresponding line.
 * **C.nanorc**: a line break \ in the middle of a string literal will break the literal's highlighting from the new line.
 * **Makefile.nanorc**: brackets () inside other brackets () will break the rule to clear colors for the outer brackets.
 * **SH.nanorc**: infact is now including lots of Bash stuff, which must be separated into dedicated bash.nanorc.
+* **SH.nanorc**: numbers get highlighted inside file paths, or if excluded don't highlight inside expresions with variables.
 ---
 ## License
 Distributed under the **MIT License**, see [LICENSE](LICENSE) for more details.

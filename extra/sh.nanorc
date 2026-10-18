@@ -37,6 +37,8 @@ color cyan "\<[0-9]+(\.[0-9]+)?\>"
 color cyan "\<0[x][0-9a-f]+\>"
 color cyan "\<0[0-7]+\>"
 color cyan "\<0[b][0-1]+\>"
+# Fix accidental numbers inside file paths
+#color normal "\<[0-9]+-[A-Za-z_][[:alnum:]_-]*\>"
 
 # Operators, punctuation
 color green "[][{}():;,|`$<>!=\\&]"
