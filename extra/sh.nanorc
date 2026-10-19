@@ -68,5 +68,8 @@ color ,green "[[:space:]]+$"
 # Comments.
 color magenta "(^|[[:blank:]])#.*"
 
+# Reminders
+color brightwhite,magenta "\<(FIXME|fixme|TODO|todo)\>"
+
 # Git conflict markers
 color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
