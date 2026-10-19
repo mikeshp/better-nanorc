@@ -1,4 +1,6 @@
-## Syntax highlighting for SFZ virtual instruments.
+# =================================================
+#  Syntax highlighting for SFZ virtual instruments
+# =================================================
 
 ## Developed by Mikhail Shprygov
 ## Profile: codeberg.org/mikeshp
@@ -8,25 +10,42 @@ syntax sfz "\.sfz$"
 header "^(<control>|<global>|<group>|<region>)"
 comment "//"
 
-# Headers / Headers with whitespace (e.g., <region>, <group>, <control>)
-color brightgreen "<[^>]+>"
+# =================================================
+#  Base Elements and Groups
+# =================================================
+## Headers
+icolor magenta "<[a-z]+>"
+icolor brightred "\<(global)\>"
+icolor yellow "\<(control)\>"
+icolor yellow "\<(curve)\>"
+icolor brightmagenta "\<(group)\>"
+icolor red "\<(region)\>"
+## Parameters (left from the equals sign)
+icolor green  "[a-z0-9_-]+="
+## Numeric values (right from the equals sign)
+icolor normal "=[a-z0-9_/\.-]+"
+## The equals sign
+icolor blue "="
 
-# Opcode parameters/keys (everything before the equals sign)
-color cyan "[A-Za-z0-9_]+="
+# =================================================
+#  Other elements and fallback highlighting
+# =================================================
+## String values and file paths
+icolor brightblue ""([^"\\]|\\.)*""
+## File path includes
+icolor brightgreen "^[[:blank:]]*#[[:blank:]]*((include(_next)?|line)\>)"
+## Fix hash on file path includes
+icolor normal "^[[:blank:]]*#"
 
-# Opcode numeric values (integers, floats, negative values)
-color brightblue "=[A-Za-z0-9_/.-]+"
-# Clean up the leading equals sign to match base color
-color white "="
-
-# String values and file paths (basic fallback highlighting)
-color yellow ""([^"\\]|\\.)*""
-
-# Standard comments (single line // )
-color brightblack "(^|[[:space:]])//.*$"
-
-# Block comments (/* ... */)
-color brightblack start="/\*" end="\*/"
-
-# Trailing whitespace errors
-color ,red "[[:space:]]+$"
+# =================================================
+#  Comments, Notes, Reminders
+# =================================================
+## Trailing whitespace
+icolor ,green "[[:space:]]+$"
+## Comments
+icolor cyan "//[^"]*$|(^|[[:blank:]])//.*"
+icolor cyan start="/\*" end="\*/"
+## Reminders
+icolor black,cyan "\<(fixme|todo)\>"
+## Git conflict markers
+icolor black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
