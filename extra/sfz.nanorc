@@ -1,0 +1,32 @@
+## Syntax highlighting for SFZ virtual instruments.
+
+## Developed by Mikhail Shprygov
+## Profile: codeberg.org/mikeshp
+## Contact: mike.shp@hotmail.com
+
+syntax sfz "\.sfz$"
+header "^(<control>|<global>|<group>|<region>)"
+comment "//"
+
+# Headers / Headers with whitespace (e.g., <region>, <group>, <control>)
+color brightgreen "<[^>]+>"
+
+# Opcode parameters/keys (everything before the equals sign)
+color cyan "[A-Za-z0-9_]+="
+
+# Opcode numeric values (integers, floats, negative values)
+color brightblue "=[A-Za-z0-9_/.-]+"
+# Clean up the leading equals sign to match base color
+color white "="
+
+# String values and file paths (basic fallback highlighting)
+color yellow ""([^"\\]|\\.)*""
+
+# Standard comments (single line // )
+color brightblack "(^|[[:space:]])//.*$"
+
+# Block comments (/* ... */)
+color brightblack start="/\*" end="\*/"
+
+# Trailing whitespace errors
+color ,red "[[:space:]]+$"
