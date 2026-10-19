@@ -130,6 +130,9 @@ color green "[][]"
 # Text Strings
 color brightmagenta "'([^']|'')*'"
 
+# Trailing whitespace
+color ,green "[[:space:]]+$"
+
 # Comments
 color red "//.*$"
 color red start="\{" end="\}"
@@ -137,9 +140,6 @@ color red start="\(\*" end="\*\)"
 
 # Compiler directives
 color magenta start="\{\$" end="\}"
-
-# Trailing whitespace
-color ,green "[[:space:]]+$"
 
 # Reminders
 icolor black,green "\<(fixme|todo|xxx)\>"
