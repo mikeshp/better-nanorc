@@ -39,6 +39,7 @@ Otherwise, comment out the corresponding line.
 * **Makefile.nanorc**: brackets () inside other brackets () will break the rule to clear colors for the outer brackets.
 * **SH.nanorc**: infact is now including lots of Bash stuff, which must be separated into dedicated bash.nanorc.
 * **SH.nanorc**: numbers get highlighted inside file paths, or if excluded don't highlight inside expresions with variables.
+* **SH.nanorc**: command keywords get highlighted inside file paths if not ending with a / immediately
 ---
 ## License
 Distributed under the **MIT License**, see [LICENSE](LICENSE) for more details.

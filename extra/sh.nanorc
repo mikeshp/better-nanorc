@@ -24,7 +24,7 @@ color brightred "\<(return|exit|break|continue|logout)\>"
 color green "[[:blank:]](-[A-Za-z]+|--\<[A-Za-z-]+)\>"
 
 # Common commands.
-color green "\<(awk|cat|tac|cd|ch(grp|mod|own)|cp|cut|echo|env|grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|(un)?zip|(un)?rar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|du|df|date|su(do)?|curl|wget|ping|ssh|rsync|scp|alias|type|clear|getopts|trap|bg|fg|jobs|calc|bc)\>"
+color green "\<(awk|cat|tac|cd|ch(grp|mod|own)|cp|cut|echo|env|(e|f)?grep|head|install|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|sort|tail|tar|(un)?zip|(un)?rar|touch|umask|unset|read|ls|wc|pwd|which|whereis|uname|find|xargs|tee|tr|du|df|date|su(do)?|curl|wget|ping|ssh|rsync|scp|alias|type|clear|getopts|trap|bg|fg|jobs|calc|bc|seq|expr|factor)\>"
 #color green "\<(su(do)?)\>"
 color normal "[.-]tar\>"
 # Fix accidental matches inside file paths
