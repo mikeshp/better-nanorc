@@ -42,7 +42,7 @@ color cyan "\<0[b][0-1]+\>"
 
 # Operators, punctuation
 color green "[][{}():;,|`$<>!=\\&]"
-color green "([+-/*%]|>>|<<|&|\^|\|)="
+color green "([+-/*%]|>>|<<|&|#|\^|\|)="
 color green "=(~)"
 #color yellow "[)(]"
 #color yellow "[][{}()$`'\"]"
@@ -57,10 +57,10 @@ color brightblue ""([^"\]|\\.)*"|'([^'\]|\\.)*'"
 #color brightyellow "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:blank:]]*[[:alnum:]_]+[[:blank:]]*|@)\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
 # Fix $ inside strings
 color brightmagenta "\<$_\>"
-color brightmagenta "[$]"
+color brightmagenta "[$@]"
 color blue "[}{]"
+color green "[#]"
 #color cyan "[)(]"
-color brightmagenta "[@]"
 
 # Trailing whitespace.
 color ,green "[[:space:]]+$"
