@@ -15,11 +15,10 @@ comment "//"
 # =================================================
 ## Headers
 icolor magenta "<[a-z]+>"
-icolor brightred "\<(global)\>"
+icolor brightyellow "\<(global)\>"
 icolor yellow "\<(control)\>"
-icolor yellow "\<(curve)\>"
 icolor brightmagenta "\<(group)\>"
-icolor red "\<(region)\>"
+icolor brightred "\<(region)\>"
 ## Parameters (left from the equals sign)
 icolor green  "[a-z0-9_-]+="
 ## Numeric values (right from the equals sign)
