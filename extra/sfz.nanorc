@@ -11,29 +11,29 @@ header "^(<control>|<global>|<group>|<region>)"
 comment "//"
 
 # =================================================
-#  Base Elements and Groups
+#  Base elements and groups
 # =================================================
-## Headers
+## Headers (Anything inside the <> brackets)
 icolor magenta "<[a-z]+>"
-icolor brightyellow "\<(global)\>"
-icolor yellow "\<(control)\>"
-icolor brightmagenta "\<(group)\>"
-icolor brightred "\<(region)\>"
-## Parameters (left from the equals sign)
-icolor green  "[a-z0-9_-]+="
-## Numeric values (right from the equals sign)
-icolor normal "=[a-z0-9_/\.-]+"
+## Opcodes (Parameters left from the equals sign)
+icolor green "[a-z0-9_-]+="
+## Sample values (File path right from the equals sign)
+icolor normal "=[a-z0-9_*/\.-]+"
+## Numeric values (Numbers right from the equals sign)
+icolor brightblue "(=|[[:space:]])([-])?[0-9]+(.[0-9]+)?"
 ## The equals sign
-icolor blue "="
+icolor brightblack "="
 
 # =================================================
 #  Other elements and fallback highlighting
 # =================================================
+## Variables (Predefined macros)
+icolor cyan "\$[a-z_]+"
 ## String values and file paths
 icolor brightblue ""([^"\\]|\\.)*""
-## File path includes
-icolor brightgreen "^[[:blank:]]*#[[:blank:]]*((include(_next)?|line)\>)"
-## Fix hash on file path includes
+## Include and Define directives
+icolor brightgreen "^[[:blank:]]*#[[:blank:]]*((include|define)\>)"
+## Fix hash on the directives
 icolor normal "^[[:blank:]]*#"
 
 # =================================================
@@ -42,9 +42,9 @@ icolor normal "^[[:blank:]]*#"
 ## Trailing whitespace
 icolor ,green "[[:space:]]+$"
 ## Comments
-icolor cyan "//[^"]*$|(^|[[:blank:]])//.*"
-icolor cyan start="/\*" end="\*/"
+icolor red "//[^"]*$|(^|[[:blank:]])//.*"
+icolor red start="/\*" end="\*/"
 ## Reminders
-icolor black,cyan "\<(fixme|todo)\>"
+icolor black,red "\<(fixme|todo)\>"
 ## Git conflict markers
-icolor black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
+icolor black,yellow "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
