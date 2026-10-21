@@ -8,26 +8,93 @@
 
 syntax pascal "\.([pP][aA][sS]|[pP][pP]|[lL][pP][rR])$"
 header "^[[:blank:]]*(program|unit|library|package)\s"
-magic "^Pascal source"
+magic  "^Pascal source"
 comment "//"
+
+# =====================================
+#  Base Reserved Keywords
+# =====================================
+## Turbo Pascal
+icolor brightblue "\<(and|or|not|xor|in|mod|div|shl|shr|to|downto|array|asm|begin|break|case|const|constructor|continue|destructor|do|else|end|false|file|for|function|goto|if|implementation|inline|interface|label|nil|object|of|on|operator|packed|procedure|program|record|repeat|set|then|true|type|unit|until|uses|var|while|with)\>"
+## Object Pascal
+icolor brightblue "\<(as|class|constref|dispose|except|exit|exports|finalization|finally|inherited|initialization|is|library|new|on|out|property|raise|self|resourcestring|threadvar|try)\>"
+## Modifiers
+icolor blue "\<(absolute|abstract|alias|assembler|cdecl|cppdecl|default|export|external|forward|generic|index|local|nostackframe|oldfpccall|override|pascal|private|protected|public|published|register|reintroduce|safecall|softfloat|specialize|stdcall|virtual|far|near)\>"
+
+# =====================================
+#  Data Types and Structures
+# =====================================
+## Base DataTypes
+icolor green "\<((u|p)?int(8|16|32|64)|real|currency|extended|single|double|(p)?(char|byte|cardinal|integer|string)|boolean|(long|p|pq|d|q)?word|(p)?longint|textfile|file|text|pointer)\>"
+## More Int DataTypes
+icolor green "\<((native|ptr|size)+u?int|(small|short|long)+int)\>"
+## More String DataTypes
+icolor green "\<p?(ansi|short|unicode|wide)?+(string|char)\>"
+## File amd I/O containers
+icolor green "\<(TStat|stat|TFlock|flock|TPollFD|pollfd|TUtimbuf|utimbuf|TTimeVal|timeval|TTimeSpec|timespec)\>"
+## Signals and System state
+icolor green "\<(TSigAction|sigaction|TSigSet|sigset_t|TTIOCPGRP|TFDSet|fd_set|T_TMS|tms|TUname|utsname)\>"
+## Pointers and Kernel alaises
+icolor green "\<((p)+(Stat|Flock|Utimbuf|TimeVal|TimeSpec|SigAction|SigSet|FDSet|_TMS|Uname))\>"
+## Integers and Architecture primitives
+icolor green "\<(TCint|cint|TCsShort|csshort|TCuChar|cuchar|TCuInt|cuint|TCuInt16|cuint16|TCuInt32|cuint32|pcslonglong|pcsshort|pcuchar|pcuint|pcuint16|pcuint32|TDev|dev_t|TGid|gid_t|TIno|ino_t|TMode|mode_t|TNlink|nlink_t|TOff|off_t|TPid|pid_t|TSize|size_t|TSsize|ssize_t|TUid|uid_t|TClock|clock_t|TTime|time_t)\>"
+## Crt variables
+icolor green "\<(screen(height|width)|check(break|eof|snow)|directvideo|textattr|wind(max|min|maxx|maxy|minx|miny))\>"
+## Structured DataTypes
+icolor brightblue "\<(record|class|object|set|array|of|variant|enum)\>"
+
+# =====================================
+#  Predefined Functions and Procedures
+# =====================================
+## Built-in functions
+icolor green "\<((up|lower)case|assignfile|Close|Param(Str|Count)|(Set)?Length|Inc|Dec|GetUserDir|Assign|Rewrite|Delete|Pos|(Left|Right)Str|Copy|FileExists|Reset|Read(ln)?|Write(ln)?|Eof|Eol|Nil)\>"
+## Crt commands
+icolor green "\<(assigncrt|clr(scr|eol)|del(ay|line)|(high|low|norm)video|(no)?sound|insline|readkey|keypressed|text(color|background)|gotoxy|where(x|y)|window)\>"
+## File and firectory management
+icolor green "\<((fp)+(Access|Chdir|Chmod|Chown|Close|FChmod|FChown|FStat|Ftruncate|Getcwd|LSeek|LStat|Mkdir|Open|Read|ReadLink|Rename|Rmdir|Stat|Symlink|Truncate|Unlink|Write|WriteV|UTime))\>"
+## Process and system management
+icolor green "\<(CreateShellArgV|FreeShellArgV|(fp)+(Alarm|Execv|Execve|Execvp|Exit|Fork|Getegid|Getenv|Geteuid|Getgid|Getgroups|Getpgrp|Getpid|Getppid|Getpriority|Getuid|Kill|Pause|Setgid|Setpgid|Setpriority|Setsid|Setuid|Sleep|Times|Umask|Uname|Wait|WaitPid))\>"
+## Signals and memory allocation
+icolor green "\<((fp)+(Sigaction|Signal|Sigpending|Sigprocmask|Sigsuspend|mmap|munmap|geterrno|time))\>"
+## Evaluation macros (?)
+icolor green "\<((fp)+(S_ISBLK|S_ISCHR|S_ISDIR|S_ISFIFO|S_ISLNK|S_ISREG|S_ISSOCK)|(w)+)exitStatus|ifexited|ifsignaled|ifstopped|stopsig|termsig))\>"
+## SysUtils
+icolor green "\<(StringOfChar|Ansi(Upper|Lower)Case|Trim(Right|Left)?|StringReplace|Compare(Text|Str))\>"
+## Type Conversions
+icolor green "\<(Int|Float|Bool|(Date)?Time|Date)ToStr|StrTo(Int(Def)?|Float|Bool)\>"
+## Math functions
+icolor green "\<(floor|ceil|abs|arctan|sin|cos|sincos|dec|inc|exp|frac|hi|int|ln|lo|odd|pi|round|sqr|sqrt|swap|trunc|ord|succ|pred|low|high|chr)\>"
+icolor green "\<(random(ize)?|randseed)\>"
+## File Handling
+icolor green "\<(eol|eoln|eof|seekeoln|seekeof|assign|append|close|closefile|reset|rewrite|seek|blockread|blockwrite|chdir|concat|copy|seek|filepos|eof|rename|flush|erase)\>"
+## Special reserved methods
+icolor green "\<(create|destroy|clear|free)\>"
+## Casting and Parsing routines
+icolor green "\<(insert|delete|ord|chr|str|strtoint(def)?|strtofloat|pos|val|(int|float)+tostr)\>"
+## Memory Operations
+icolor green "\<(addr|assigned|dispose|fillchar|freemem|getmem|move|new|reallocmem)\>"
+icolor green "\<(assigned|sizeof|(set)?length)\>"
 
 # =====================================
 #  Operators, Punctuation, Brackets
 # =====================================
 ## Operators
-icolor brightyellow "[][}{)(,.;:/=+*!?`^@&~><-]+"
+icolor brightgreen "[][)(,.;:/=+*!?`^@&~><-]+"
 ## Logic Operators
-icolor brightblue "\<(and|or|not|xor|in)\>"
+icolor brightblue  "\<(and|or|not|xor|in)\>"
 ## Math and Bitwise
-icolor brightyellow "\<(mod|div|shl|shr)\>"
+icolor green "\<(mod|div|shl|shr)\>"
 ## Escape, Pointers and Character Expression
 icolor green "[&@#$^]"
-## For Loops
-icolor brightblue "\<(to|downto)\>"
+## Punctuation
+icolor brightgreen "[,.]"
+icolor brightgreen "[;]"
+icolor normal "[.]"
 ## Brackets
 icolor brightgreen "[)(]"
 ## Squares
 icolor green "[][]"
+
 
 # =====================================
 #  Numbers
@@ -41,83 +108,18 @@ icolor cyan "\%[0-1]+\>"
 ## Octal
 icolor cyan "\&[0-7]+\>"
 
-# Reserved Keywords Turbo Pascal
-icolor brightblue "\<(array|asm|begin|break|case|const|constructor|continue|destructor|do|else|end|false|file|for|function|goto|if|implementation|inline|interface|label|nil|object|of|on|operator|packed|procedure|program|record|repeat|set|then|true|type|unit|until|uses|var|while|with)\>"
 
-# Reserved Keywords Object Pascal
-icolor brightblue "\<(as|class|constref|dispose|except|exit|exports|finalization|finally|inherited|initialization|is|library|new|on|out|property|raise|self|resourcestring|threadvar|try)\>"
-
-# Modifiers
-icolor magenta "\<(absolute|abstract|alias|assembler|cdecl|cppdecl|default|export|external|forward|generic|index|local|nostackframe|oldfpccall|override|pascal|private|protected|public|published|register|reintroduce|safecall|softfloat|specialize|stdcall|virtual|far|near)\>"
-
-# DataTypes
-icolor green "\<((u|p)?int(8|16|32|64)|real|currency|extended|single|double|(p)?(char|byte|cardinal|integer|string)|boolean|(long|p|pq|d|q)?word|(p)?longint|textfile|file|text|pointer)\>"
-# More Int DataTypes
-icolor green "\<((native|ptr|size)+u?int|(small|short|long)+int)\>"
-# More String DataTypes
-icolor green "\<p?(ansi|short|unicode|wide)?+(string|char)\>"
-# Structured DataTypes
-icolor brightblue "\<(record|class|object|set|array|of|variant|interface|enum)\>"
-icolor brightblue "\<(set|array|of|variant|enum)\>"
-# BaseUnix Types
-## File amd I/O containers
-icolor green "\<(TStat|stat|TFlock|flock|TPollFD|pollfd|TUtimbuf|utimbuf|TTimeVal|timeval|TTimeSpec|timespec)\>"
-## Signals and System state
-icolor green "\<(TSigAction|sigaction|TSigSet|sigset_t|TTIOCPGRP|TFDSet|fd_set|T_TMS|tms|TUname|utsname)\>"
-## Pointers and Kernel alaises
-icolor green "\<((p)+(Stat|Flock|Utimbuf|TimeVal|TimeSpec|SigAction|SigSet|FDSet|_TMS|Uname))\>"
-## Integers and Architecture primitives
-icolor green "\<(TCint|cint|TCsShort|csshort|TCuChar|cuchar|TCuInt|cuint|TCuInt16|cuint16|TCuInt32|cuint32|pcslonglong|pcsshort|pcuchar|pcuint|pcuint16|pcuint32|TDev|dev_t|TGid|gid_t|TIno|ino_t|TMode|mode_t|TNlink|nlink_t|TOff|off_t|TPid|pid_t|TSize|size_t|TSsize|ssize_t|TUid|uid_t|TClock|clock_t|TTime|time_t)\>"
-
-# Other
-icolor yellow "\<((up|lower)case|assignfile|Close|Param(Str|Count)|(Set)?Length|Inc|Dec|GetUserDir|Assign|Rewrite|Delete|Pos|(Left|Right)Str|Copy|FileExists|Reset|Read(ln)?|Write(ln)?|Eof|Eol|Nil)\>"
-
-# Crt commands
-icolor yellow "\<(assigncrt|clr(scr|eol)|del(ay|line)|(high|low|norm)video|(no)?sound|insline|readkey|keypressed|text(color|background)|gotoxy|where(x|y)|window)\>"
-# Crt variables
-icolor green "\<(screen(height|width)|check(break|eof|snow)|directvideo|textattr|wind(max|min|maxx|maxy|minx|miny))\>"
-
-# BaseUnix Routines
-## File and firectory management
-icolor yellow "\<((fp)+(Access|Chdir|Chmod|Chown|Close|FChmod|FChown|FStat|Ftruncate|Getcwd|LSeek|LStat|Mkdir|Open|Read|ReadLink|Rename|Rmdir|Stat|Symlink|Truncate|Unlink|Write|WriteV|UTime))\>"
-## Process and system management
-icolor yellow "\<(CreateShellArgV|FreeShellArgV|(fp)+(Alarm|Execv|Execve|Execvp|Exit|Fork|Getegid|Getenv|Geteuid|Getgid|Getgroups|Getpgrp|Getpid|Getppid|Getpriority|Getuid|Kill|Pause|Setgid|Setpgid|Setpriority|Setsid|Setuid|Sleep|Times|Umask|Uname|Wait|WaitPid))\>"
-## Signals and memory allocation
-icolor yellow "\<((fp)+(Sigaction|Signal|Sigpending|Sigprocmask|Sigsuspend|mmap|munmap|geterrno|time))\>"
-## Evaluation macros (?)
-icolor yellow "\<((fp)+(S_ISBLK|S_ISCHR|S_ISDIR|S_ISFIFO|S_ISLNK|S_ISREG|S_ISSOCK)|(w)+)exitStatus|ifexited|ifsignaled|ifstopped|stopsig|termsig))\>"
-
-## SysUtils
-icolor yellow "\<(StringOfChar|Ansi(Upper|Lower)Case|Trim(Right|Left)?|StringReplace|Compare(Text|Str))\>"
-## Type Conversions
-icolor yellow "\<(Int|Float|Bool|(Date)?Time|Date)ToStr|StrTo(Int(Def)?|Float|Bool)\>"
-
-# Math functions
-icolor yellow "\<(floor|ceil|abs|arctan|sin|cos|sincos|dec|inc|exp|frac|hi|int|ln|lo|odd|pi|round|sqr|sqrt|swap|trunc|ord|succ|pred|low|high|chr)\>"
-icolor yellow "\<(random(ize)?|randseed)\>"
-
-# File Handling
-icolor yellow "\<(eol|eoln|eof|seekeoln|seekeof|assign|append|close|closefile|reset|rewrite|seek|blockread|blockwrite|chdir|concat|copy|seek|filepos|eof|rename|flush|erase)\>"
-
-# Memory Operations
-icolor yellow "\<(addr|assigned|dispose|fillchar|freemem|getmem|move|new|reallocmem)\>"
-icolor green "\<(assigned|sizeof|(set)?length)\>"
-
-# Casting and Parsing routines
-icolor yellow "\<(insert|delete|ord|chr|str|strtoint(def)?|strtofloat|pos|val|(int|float)+tostr)\>"
-
-# Special Constants
+# =====================================
+#  Special Constants, Macros, Routines
+# =====================================
+## Special constants
 icolor cyan "\<(true|false)\>"
 icolor cyan "\<(nil|nan|pi|infinity|unassigned)\>"
-# Special predefined variables
+## Special predefined variables
 icolor green "\<(stdin|stdout|stderr|input|output)\>"
 icolor green "\<(LineEnding|(Directory|Path)Separator|Param(Str|Count))\>"
-# Special reserved words
-icolor magenta "\<(Result|self)\>"
-icolor green "\<(self)\>"
-# Special reserved methods
-icolor yellow "\<(create|destroy|clear|free)\>"
-# BaseUnix macros and constants
+## Special reserved words
+icolor green "\<(self|result)\>"
 ## Standard streams
 icolor green "\<((STDIN_|STDOUT_|STDERR_)FILENO)\>"
 ## File open modes and flags
@@ -137,12 +139,18 @@ icolor green "\<(SIG(HUP|INT|QUIT|ILL|TRAP|ABRT|IOT|BUS|FPE|KILL|USR1|SEGV|USR2|
 ## Wait and exit status parameters
 icolor green "\<(WNOHANG|WUNTRACED)\>"
 
+# =====================================
+#  Flow and Loop Control
+# =====================================
 ## Flow control
-icolor magenta "\<(break|continue|exit|label|goto|halt)\>"
+icolor blue "\<(break|continue|exit|label|goto|halt)\>"
 ## Block flow control
 icolor blue "\<(interface|implementation|finalization|initialization)\>"
 
-# Text Strings
+# =====================================
+#  String Literals
+# =====================================
+## Text Strings
 icolor brightmagenta "'([^']|'')*'"
 
 # =====================================
@@ -154,9 +162,10 @@ icolor ,green "[[:space:]]+$"
 icolor red "//.*$"
 icolor red start="\{" end="\}"
 icolor red start="\(\*" end="\*\)"
-## Compiler directives
+## Compiler and Lazarus directives
 icolor magenta start="\{\$" end="\}"
+icolor magenta start="\{\%" end="\}"
 ## Reminders
-icolor black,green "\<(fixme|todo|xxx)\>"
+icolor black,red "\<(fixme|todo|xxx)\>"
 ## Git conflict markers
-icolor black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
+icolor black,magenta "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
