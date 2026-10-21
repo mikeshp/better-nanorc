@@ -40,7 +40,7 @@ Otherwise, comment out the corresponding line.
 * **SH.nanorc**: infact is now including lots of Bash stuff, which must be separated into dedicated bash.nanorc.
 * **SH.nanorc**: numbers get highlighted inside file paths, or if excluded don't highlight inside expresions with variables.
 * **SH.nanorc**: command keywords get highlighted inside file paths if not ending with a / immediately
-* **Sfz.nanorc**: numbers highlight as numeric values inside file paths with spaces (rather a developer's mistake).
+* **Sfz.nanorc**: numbers highlight as numeric values inside file paths with spaces.
 ---
 ## License
 Distributed under the **MIT License**, see [LICENSE](LICENSE) for more details.
