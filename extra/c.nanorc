@@ -1,18 +1,24 @@
-## Syntax highlighting for C and C++ files.
+# =========================================
+#  Syntax highlighting for C and C++ files
+# =========================================
 
-## This file was modified by Mikhail Shprygov
+## Developed by Mikhail Shprygov
+## Profile: codeberg.org/mikeshp
+## Contact: mike.shp@hotmail.com
+
+## Based on original c.nanorc shiped with Debian
+
 ## Since I only write in C for GCC on Linux,
-## I am not sure about its behaviour with C++
-## For contact find me on codeberg.org/mikeshp
+## I don't guarantee its behaviour with C++
 
 syntax c "\.([ch](pp|xx)?|C|cc|c\+\+|cu|H|hh|ii?)$"
 header "-\*-.*\<C(\+\+)?((;|[[:blank:]]).*)?-\*-"
 magic "^(C|C\+\+) (source|program)"
 comment "//"
 
-# =======================================
+# =========================================
 #  Base Keywords and Types
-# =======================================
+# =========================================
 ## Base C keywords
 color green "\<(auto|break|case|bool|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|return|restrict|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|size_t)\>"
 ## More types
@@ -31,9 +37,9 @@ color green "\<(struct|union|enum|typedef)\>"
 ## Storage types
 color green "\<(auto|extern|static|register)\>"
 
-# =======================================
+# =========================================
 #  Flow Control
-# =======================================
+# =========================================
 ## Conditionals and loop control
 color brightyellow "\<(if|else|for|while|do|switch|case|default)\>"
 color brightyellow "\<(try|throw|catch|operator|new|delete)\>"
@@ -42,9 +48,9 @@ color magenta "\<(break|continue|goto|return|exit|abort)\>"
 color brightyellow "^[[:blank:]]*[A-Z_a-z][0-9A-Z_a-z]*:[[:blank:]]*$"
 color brightyellow ":[[:blank:]]*$"
 
-# =======================================
+# =========================================
 #  Operators, Punctuation, Brackets
-# =======================================
+# =========================================
 color green "[-+,;:/=*!?%&|^~><]+"
 color green "[&|^~><]"
 color green "\<(and|or|xor|not)\>"
@@ -55,9 +61,9 @@ color normal "[}{]"
 color green  "[][]"
 color normal "[.]"
 
-# =======================================
+# =========================================
 #  Macros, Constants and Numbers
-# =======================================
+# =========================================
 ## Constants and macros
 color normal "\<[A-Z_][0-9A-Z_]*\>"
 ## Special constants and system tokens
@@ -73,9 +79,9 @@ icolor cyan "\<0[x][0-9a-f]+(llu|ull|ul|lu|ll|l|u)?\>"
 icolor cyan "\<0[0-7]+(llu|ull|ul|lu|ll|l|u)?\>"
 icolor cyan "\<0[b][0-1]+(llu|ull|ul|lu|ll|l|u)?\>"
 
-# =======================================
-#  Built-in Functions
-# =======================================
+# =========================================
+#  Reserved Function Names
+# =========================================
 ## Math.h functions
 #color yellow "\<(a?cosh?|a?sinh?|a?tanh?)\>"
 #color yellow "\<(pow|sqrt|cbrt|exp|log)\>"
@@ -102,9 +108,9 @@ color yellow "__attribute__[[:blank:]]*\(\([^)]*\)\)|__(aligned|asm|builtin|hidd
 ## Deprecated
 #color yellow,white "\<(gets)\>"
 
-# =======================================
+# =========================================
 #  Strings and Literals
-# =======================================
+# =========================================
 ## Single-quoted stuff (characters, backslash escapes, hex and octal byte codes)
 color cyan "'([^'\]|\\(["'\abfnrtv]|x[[:xdigit:]]{1,2}|[0-3]?[0-7]{1,2}))'"
 ## Double-quoted strings and names of included files
@@ -122,9 +128,9 @@ color cyan  "^[[:blank:]]*#[[:blank:]]*((include(_next)?|line)\>)"
 ## Fix hash on preprocessor lines
 color normal "^[[:blank:]]*#"
 
-# =======================================
+# =========================================
 #  Comments, Notes, Reminders
-# =======================================
+# =========================================
 ## Trailing whitespace
 color ,green "[[:space:]]+$"
 ## Comments
