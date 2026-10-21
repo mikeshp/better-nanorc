@@ -119,7 +119,8 @@ icolor cyan "\<(nil|nan|pi|infinity|unassigned)\>"
 icolor green "\<(stdin|stdout|stderr|input|output)\>"
 icolor green "\<(LineEnding|(Directory|Path)Separator|Param(Str|Count))\>"
 ## Special reserved words
-icolor green "\<(self|result)\>"
+icolor magenta "\<result\>"
+icolor yellow "\<self\>"
 ## Standard streams
 icolor green "\<((STDIN_|STDOUT_|STDERR_)FILENO)\>"
 ## File open modes and flags
@@ -143,7 +144,7 @@ icolor green "\<(WNOHANG|WUNTRACED)\>"
 #  Flow and Loop Control
 # =====================================
 ## Flow control
-icolor blue "\<(break|continue|exit|label|goto|halt)\>"
+icolor magenta  "\<(break|continue|exit|label|goto|halt)\>"
 ## Block flow control
 icolor blue "\<(interface|implementation|finalization|initialization)\>"
 
