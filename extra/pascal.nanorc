@@ -1,19 +1,48 @@
-## Syntax highlighting for Free Pascal
+# =====================================
+#  Syntax highlighting for Free Pascal
+# =====================================
 
-## This file was heavily modified by Mikhail Shprygov
-## I write in Free Pascal for FPC on Linux only
-## and I have no idea how this may behave on other dialect/platform
-## For any questions and suggestions find me on github.com/mshprygov
+## Developed by Mikhail Shprygov
+## Profile: codeberg.org/mikeshp
+## Contact: mike.shp@hotmail.com
 
-#syntax "pascal" "\.pas$" "\.pp$"
-syntax "pascal" "\.(pas|pp|lpr)$"
+syntax pascal "\.([pP][aA][sS]|[pP][pP]|[lL][pP][rR])$"
+header "^[[:blank:]]*(program|unit|library|package)\s"
+magic "^Pascal source"
 comment "//"
 
-# Numbers
-color cyan "\<[0-9]+(\.[0-9]+)?\>"
+# =====================================
+#  Operators, Punctuation, Brackets
+# =====================================
+## Operators
+icolor brightyellow "[][}{)(,.;:/=+*!?`^@&~><-]+"
+## Logic Operators
+icolor brightblue "\<(and|or|not|xor|in)\>"
+## Math and Bitwise
+icolor brightyellow "\<(mod|div|shl|shr)\>"
+## Escape, Pointers and Character Expression
+icolor green "[&@#$^]"
+## For Loops
+icolor brightblue "\<(to|downto)\>"
+## Brackets
+icolor brightgreen "[)(]"
+## Squares
+icolor green "[][]"
+
+# =====================================
+#  Numbers
+# =====================================
+## Integer, float, and scientific
+icolor cyan "\<[0-9]+(\.[0-9]+)?(e[+-]?[0-9]+)?\>"
+## Hexadecimal
+icolor cyan "\$[0-9a-f]+\>"
+## Binary
+icolor cyan "\%[0-1]+\>"
+## Octal
+icolor cyan "\&[0-7]+\>"
 
 # Reserved Keywords Turbo Pascal
-icolor brightblue "\<(and|array|asm|begin|break|case|const|constructor|continue|destructor|div|do|downto|else|end|false|file|for|function|goto|if|implementation|in|inline|interface|label|mod|nil|not|object|of|on|operator|or|packed|procedure|program|record|repeat|set|shl|shr|then|to|true|type|unit|until|uses|var|while|with|xor)\>"
+icolor brightblue "\<(array|asm|begin|break|case|const|constructor|continue|destructor|do|else|end|false|file|for|function|goto|if|implementation|inline|interface|label|nil|object|of|on|operator|packed|procedure|program|record|repeat|set|then|true|type|unit|until|uses|var|while|with)\>"
 
 # Reserved Keywords Object Pascal
 icolor brightblue "\<(as|class|constref|dispose|except|exit|exports|finalization|finally|inherited|initialization|is|library|new|on|out|property|raise|self|resourcestring|threadvar|try)\>"
@@ -41,7 +70,7 @@ icolor green "\<((p)+(Stat|Flock|Utimbuf|TimeVal|TimeSpec|SigAction|SigSet|FDSet
 icolor green "\<(TCint|cint|TCsShort|csshort|TCuChar|cuchar|TCuInt|cuint|TCuInt16|cuint16|TCuInt32|cuint32|pcslonglong|pcsshort|pcuchar|pcuint|pcuint16|pcuint32|TDev|dev_t|TGid|gid_t|TIno|ino_t|TMode|mode_t|TNlink|nlink_t|TOff|off_t|TPid|pid_t|TSize|size_t|TSsize|ssize_t|TUid|uid_t|TClock|clock_t|TTime|time_t)\>"
 
 # Other
-icolor yellow "\<((up|lower)case|assignfile|Close|Param(Str|Count)|(Set)?Length|Inc|Dec|GetUserDir|Assign|Rewrite|CompareStr|Delete|CompareText|Pos|(Left|Right)Str|Copy|FileExists|Reset|Read(ln)?|Write(ln)?|Eof|Eol|Nil)\>"
+icolor yellow "\<((up|lower)case|assignfile|Close|Param(Str|Count)|(Set)?Length|Inc|Dec|GetUserDir|Assign|Rewrite|Delete|Pos|(Left|Right)Str|Copy|FileExists|Reset|Read(ln)?|Write(ln)?|Eof|Eol|Nil)\>"
 
 # Crt commands
 icolor yellow "\<(assigncrt|clr(scr|eol)|del(ay|line)|(high|low|norm)video|(no)?sound|insline|readkey|keypressed|text(color|background)|gotoxy|where(x|y)|window)\>"
@@ -58,8 +87,10 @@ icolor yellow "\<((fp)+(Sigaction|Signal|Sigpending|Sigprocmask|Sigsuspend|mmap|
 ## Evaluation macros (?)
 icolor yellow "\<((fp)+(S_ISBLK|S_ISCHR|S_ISDIR|S_ISFIFO|S_ISLNK|S_ISREG|S_ISSOCK)|(w)+)exitStatus|ifexited|ifsignaled|ifstopped|stopsig|termsig))\>"
 
-# SysUtils
-icolor yellow "\<(StringOfChar)\>"
+## SysUtils
+icolor yellow "\<(StringOfChar|Ansi(Upper|Lower)Case|Trim(Right|Left)?|StringReplace|Compare(Text|Str))\>"
+## Type Conversions
+icolor yellow "\<(Int|Float|Bool|(Date)?Time|Date)ToStr|StrTo(Int(Def)?|Float|Bool)\>"
 
 # Math functions
 icolor yellow "\<(floor|ceil|abs|arctan|sin|cos|sincos|dec|inc|exp|frac|hi|int|ln|lo|odd|pi|round|sqr|sqrt|swap|trunc|ord|succ|pred|low|high|chr)\>"
@@ -106,43 +137,26 @@ icolor green "\<(SIG(HUP|INT|QUIT|ILL|TRAP|ABRT|IOT|BUS|FPE|KILL|USR1|SEGV|USR2|
 ## Wait and exit status parameters
 icolor green "\<(WNOHANG|WUNTRACED)\>"
 
-# Flow control
+## Flow control
 icolor magenta "\<(break|continue|exit|label|goto|halt)\>"
-
-# Block flow control
+## Block flow control
 icolor blue "\<(interface|implementation|finalization|initialization)\>"
 
-# Operators
-color brightyellow "[][}{)(,.;:/=+*!?`^@&~><-]+"
-# Logic Operators
-icolor brightblue "\<(and|or|not|xor|in)\>"
-# Math and Bitwise
-icolor brightyellow "\<(mod|div|shl|shr)\>"
-# Escape, Pointers and Character Expression
-color green "[&@#$^]"
-# For Loops
-icolor brightblue "\<(to|downto)\>"
-# Brackets
-color brightgreen "[)(]"
-# Squares
-color green "[][]"
-
 # Text Strings
-color brightmagenta "'([^']|'')*'"
+icolor brightmagenta "'([^']|'')*'"
 
-# Trailing whitespace
-color ,green "[[:space:]]+$"
-
-# Comments
-color red "//.*$"
-color red start="\{" end="\}"
-color red start="\(\*" end="\*\)"
-
-# Compiler directives
-color magenta start="\{\$" end="\}"
-
-# Reminders
+# =====================================
+#  Comments, Notes, Reminders
+# =====================================
+## Trailing whitespace
+icolor ,green "[[:space:]]+$"
+## Comments
+icolor red "//.*$"
+icolor red start="\{" end="\}"
+icolor red start="\(\*" end="\*\)"
+## Compiler directives
+icolor magenta start="\{\$" end="\}"
+## Reminders
 icolor black,green "\<(fixme|todo|xxx)\>"
-
-# Git conflict markers
-color black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
+## Git conflict markers
+icolor black,red "^[[:blank:]]*(<<<<<<<|=======|>>>>>>>).*$"
